@@ -13,7 +13,10 @@ const ProductPage = () => {
       .catch((err) => {
         console.log("Err: ", err);
       });
-    dispatch(setProducts(response.data));
+    if (response?.data) {
+      const reversedProducts = [...response.data].reverse();
+      dispatch(setProducts(reversedProducts));
+    }
   };
 
   useEffect(() => {
